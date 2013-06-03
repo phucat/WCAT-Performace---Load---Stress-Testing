@@ -1,0 +1,12 @@
+settings
+{
+	clients = 1;
+	server	= "192.168.11.12";
+	virtualclients = 5000;
+	clientfile = "scenario.txt";
+	counters
+	{
+		interval = 10;
+		counter = "Processor Information(_Total)\\%Processor Time";
+	}
+}

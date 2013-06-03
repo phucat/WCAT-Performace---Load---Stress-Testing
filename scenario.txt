@@ -1,0 +1,64 @@
+scenario
+{
+	warmup = 30;
+	duration = 60000;
+	cooldown = 30;
+	default
+	{
+		setheader
+		{
+			name    = "Host";
+			value    = server();
+		}
+		setheader
+		{
+			name    = "Connection";
+			value    = "keep-alive";
+		}
+		setheader
+		{
+			name    = "Accept";
+			value    = "image/gif, image/x-xbitmap, image/jpeg, image/pjpeg, application/vnd.ms-excel, */*";
+		}
+		setheader
+		{
+			name    = "Accept-Language";
+			value    = "en-us";
+		}
+		setheader
+		{
+			name    = "User-Agent";
+			value    = "Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0";
+		}
+		setheader
+		{
+			name    = "Accept-Encoding";
+			value    = "gzip, deflate";
+		}
+		setheader
+		{
+			name    = "X-Requested-With";
+			value    = "XMLHttpRequest";
+		}
+		setheader
+		{
+			name    = "X-Requested-With";
+			value    = "XMLHttpRequest";
+		}
+
+		version     = HTTP11;
+		statuscode  = 200;
+		close       = ka;
+	}
+		
+	transaction
+	{
+		id = "get_defaults";
+		weight = 100;
+		request
+		{
+			url = ":88/Main/GetDefaults";
+			statuscode = 200;
+		}
+	}
+}

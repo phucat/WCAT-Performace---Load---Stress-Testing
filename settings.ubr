@@ -1,0 +1,31 @@
+settings
+{
+
+    clientfile     = "scen1e.ubr";
+    server         = "192.168.11.12";
+    clients        = 1;
+    virtualclients = 5000;
+
+
+    counters
+    {
+        interval = 10;
+
+        counter = "Processor(_Total)\\% Processor Time";
+       
+    }
+
+    registry
+    {
+        path = "System\\CurrentControlSet\\Control\\FileSystem";
+        name = "NtfsDisableLastAccessUpdate";
+        type = REG_DWORD;
+    }
+
+    registry
+    {
+        path = "System\\CurrentControlSet\\Services\\Tcpip\\Parameters";
+        name = "SynAttackProtect";
+        type = REG_DWORD;
+    }
+}

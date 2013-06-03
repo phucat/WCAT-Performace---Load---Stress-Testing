@@ -1,0 +1,94 @@
+scenario
+{
+    warmup      = 10;
+    duration    = 360;
+    cooldown    = 60;
+
+    default
+	{
+		setheader
+		{
+			name    = "Host";
+			value    = server();
+		}
+		setheader
+		{
+			name    = "Connection";
+			value    = "keep-alive";
+		}
+		setheader
+		{
+			name    = "Accept";
+			value    = "*/*";
+		}
+		setheader
+		{
+			name    = "Accept-Language";
+			value    = "en-us";
+		}
+		setheader
+		{
+			name    = "User-Agent";
+			value    = "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; WOW64; Trident/5.0)";
+		}
+		setheader
+		{
+			name    = "Accept-Encoding";
+			value    = "gzip, deflate";
+		}
+		setheader
+		{
+			name    = "X-Requested-With";
+			value    = "XMLHttpRequest";
+		}
+		
+		setheader
+		{
+			name    = "Content-Type";
+			value    = "application/x-www-form-urlencoded; charset=UTF-8";
+		}
+
+		version     = HTTP11;
+		statuscode  = 200;
+		close       = ka;
+	}
+		
+
+    transaction
+    {
+        id = "get_defaults";
+        weight = 50;
+
+        request
+        {
+
+           	url = "/Main/GetDefaultsTest?r=26691&user=21&code=TITE";
+			port = 88;
+
+        }
+    }
+	
+	transaction
+    {
+        id = "get_mytrans";
+        weight = 60;
+
+        request
+        {
+           	url = "/Main/GetMyTransTest?v=8495&r=26691&code=TITE";
+			port = 88;
+        }
+    }
+	
+	transaction
+    {
+        id = "get_bid";
+        weight = 40;
+
+        request
+        {
+           	url = "/Main/BidWPTest?v=8495&r=26691&user=21&code=TITE";
+			port = 88;
+        }
+    }
+}
